@@ -70,3 +70,17 @@ class RelativeToDatetimeField(DependentField):
         if type(other_field) != datetime.datetime:
             raise InvalidFieldType("field {} isn't of type datetime.datetime")
         return other_field + self._delta
+
+class RandomDate(Factory):
+    """
+    Returns an dates between `minimum` and `maximum`
+    """
+    def __init__(self, minimum=0, maximum=0, form="%Y-%m-%d %H:%M:%S"):
+        super(RandomDate, self).__init__()
+        self._minimum = minimum
+        self._maximum = maximum
+        self._form = form
+
+    def __call__(self):
+        timeStamp = random.randint(self._minimum, self._maximum)
+        return datetime.datetime.fromtimestamp(timeStamp).strftime(self._form)

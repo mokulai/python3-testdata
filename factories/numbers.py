@@ -11,6 +11,7 @@ class RandomNumber(Factory):
         self._minimum = minimum
         self._maximum = maximum
 
+
 class RandomInteger(RandomNumber):
     """
     Returns an Integer between `minimum` and `maximum`
